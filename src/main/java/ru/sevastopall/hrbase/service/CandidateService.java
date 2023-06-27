@@ -16,4 +16,6 @@ public interface CandidateService {
     Collection<Candidate> findAll();
 
     Optional<Candidate> findBySurname(String candidateSurname);
+
+    Collection<Candidate> findBySkillsContaining(String skill);
 }

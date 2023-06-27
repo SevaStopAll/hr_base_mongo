@@ -18,5 +18,6 @@ public class Candidate {
 
     private String name;
     private String surname;
-    private Map<String, String> skills;
+    private String[] skills;
+    private String[] contacts;
 }

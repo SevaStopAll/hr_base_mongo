@@ -27,15 +27,29 @@ public class CandidateController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity redirect(@PathVariable String id) {
+    public ResponseEntity<String> redirect(@PathVariable String id) {
         Optional<Candidate> optional = candidateService.findById(id);
         if (optional.isEmpty()) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND).build();
         }
-        var body =  optional.get().getSkills();
+        var body =  optional.get().toString();
         return ResponseEntity.status(HttpStatus.FOUND)
                 .header("Status", "Found")
+                .body(body);
+    }
+
+    @GetMapping("/java")
+    public ResponseEntity<String> findJava() {
+        var body = candidateService.findBySkillsContaining("java").toString();
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .body(body);
+    }
+
+    @GetMapping("/kotlin")
+    public ResponseEntity<String> findKotlin() {
+        var body = candidateService.findBySkillsContaining("kotlin").toString();
+        return ResponseEntity.status(HttpStatus.FOUND)
                 .body(body);
     }
 }

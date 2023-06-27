@@ -16,4 +16,5 @@ public interface CandidateRepository extends MongoRepository<Candidate, String> 
 
     Optional<Candidate> findBySurname(String candidateSurname);
 
+    Collection<Candidate> findBySkillsContaining(String skill);
 }

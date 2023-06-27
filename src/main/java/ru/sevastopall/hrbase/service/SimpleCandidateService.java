@@ -30,11 +30,16 @@ public class SimpleCandidateService implements CandidateService {
 
     @Override
     public Collection<Candidate> findAll() {
-        return (Collection<Candidate>) candidates.findAll();
+        return candidates.findAll();
     }
 
     @Override
     public Optional<Candidate> findBySurname(String candidateSurname) {
         return candidates.findBySurname(candidateSurname);
+    }
+
+    @Override
+    public Collection<Candidate> findBySkillsContaining(String skill) {
+        return candidates.findBySkillsContaining(skill);
     }
 }
