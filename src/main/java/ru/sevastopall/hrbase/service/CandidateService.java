@@ -18,4 +18,12 @@ public interface CandidateService {
     Optional<Candidate> findBySurname(String candidateSurname);
 
     Collection<Candidate> findBySkillsContaining(String skill);
+
+    Collection<Candidate> findByContactsContaining(String contact);
+
+    Collection<Candidate> findCandidateByAgeBetween(int after, int before);
+
+    Collection<Candidate> findCandidateByCV();
+
+    Collection<Candidate> findCandidateByExperienceBetween(int after, int before);
 }

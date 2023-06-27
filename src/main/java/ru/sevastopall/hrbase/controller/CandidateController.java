@@ -39,17 +39,32 @@ public class CandidateController {
                 .body(body);
     }
 
-    @GetMapping("/java")
-    public ResponseEntity<String> findJava() {
-        var body = candidateService.findBySkillsContaining("java").toString();
+    @GetMapping("/findBySkill")
+    public ResponseEntity<String> findSkill(@RequestParam(value = "skill", required = true) String skill) {
+        var body = candidateService.findBySkillsContaining(skill).toString();
         return ResponseEntity.status(HttpStatus.FOUND)
                 .body(body);
     }
 
-    @GetMapping("/kotlin")
-    public ResponseEntity<String> findKotlin() {
-        var body = candidateService.findBySkillsContaining("kotlin").toString();
+    @GetMapping("/findByContact")
+    public ResponseEntity<String> findByContact(@RequestParam(value = "contact", required = true) String contact) {
+        var body = candidateService.findByContactsContaining(contact).toString();
         return ResponseEntity.status(HttpStatus.FOUND)
                 .body(body);
     }
+
+    @GetMapping("/filterAge")
+    public ResponseEntity<String> filterByAge(@RequestParam(value = "from") int from, @RequestParam(value = "to") int to) {
+        var body = candidateService.findCandidateByAgeBetween(from, to).toString();
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .body(body);
+    }
+
+    @GetMapping("/filterCV")
+    public ResponseEntity<String> filterByCV() {
+        var body = candidateService.findCandidateByCV().toString();
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .body(body);
+    }
+
 }

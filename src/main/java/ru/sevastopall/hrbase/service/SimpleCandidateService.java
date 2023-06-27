@@ -40,6 +40,26 @@ public class SimpleCandidateService implements CandidateService {
 
     @Override
     public Collection<Candidate> findBySkillsContaining(String skill) {
-        return candidates.findBySkillsContaining(skill);
+        return candidates.findBySkillsContainingIgnoreCase(skill);
+    }
+
+    @Override
+    public Collection<Candidate> findByContactsContaining(String contact) {
+        return candidates.findCandidateByContactsContainingIgnoreCase(contact);
+    }
+
+    @Override
+    public Collection<Candidate> findCandidateByAgeBetween(int after, int before) {
+        return candidates.findCandidateByAgeBetween(after, before);
+    }
+
+    @Override
+    public Collection<Candidate> findCandidateByCV() {
+        return candidates.findCandidateByCvIsNotNull();
+    }
+
+    @Override
+    public Collection<Candidate> findCandidateByExperienceBetween(int after, int before) {
+        return candidates.findCandidateByExperienceBetween(after, before);
     }
 }
